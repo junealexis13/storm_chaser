@@ -104,7 +104,7 @@ class Body(StormChase):
 
             folium.GeoJson(data=filtered_tracks.to_json(),
                         name='Storm Tracks', 
-                        style_function=lambda x: {"color": "red", "weight": 0.3, "dashArray": "3, 2"},
+                        style_function=lambda x: {"color": "white", "weight": 0.6, "dashArray": "3, 2"},
                         popup=folium.GeoJsonPopup(
                                 fields=["NAME", "NATURE", "SID"],  # 👈 customize these based on your column names
                                 aliases=["Name", "Nature", "Storm ID"],  # 👈 what to show as labels
@@ -119,7 +119,7 @@ class Body(StormChase):
                             
     def body(self):
         #body map
-        m = folium.Map(location=[15.1922672,120.7440661], zoom_start=8)
+        m = folium.Map(location=[15.1922672,120.7440661], zoom_start=8, tiles='esri-worldimagery')
 
         self.header()
         with st.form(key='view'):
@@ -130,7 +130,7 @@ class Body(StormChase):
                 self.showmap(m, select[0])
                 data = self.fetch_storm_data(select[0])
                 self.gen_report(data=data, m=m)
-                st_folium(m, use_container_width=True, height=350)
+                st_folium(m, use_container_width=True, height=600)
 
 
 a = Body()
