@@ -30,6 +30,8 @@ class Body(StormChase):
     def header(self):
         with st.container(border=True):
             st.title('Typhoon Track Viewer')
+            st.markdown('A simple tool to view historical typhoon tracks from International Best Track Archive for Climate Stewardship (IBTrACS) dataset.')
+            st.caption('Datasets are requested from National Centers for Environmental Information - National Oceanic and Atmospheric Administration (NCEI-NOAA)')
 
     def get_coastal_muni(self):
         ##
